@@ -13423,10 +13423,10 @@ Transform:
   - {fileID: 316332016}
   - {fileID: 1302794209}
   - {fileID: 231131819}
-  - {fileID: 402276904}
-  - {fileID: 1485830343}
   - {fileID: 727830615}
   - {fileID: 1234543692}
+  - {fileID: 402276904}
+  - {fileID: 1485830343}
   m_Father: {fileID: 1455833404}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17299,6 +17299,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 692792642}
     m_Modifications:
+    - target: {fileID: 2005542053, guid: 40577b03be6a43c49aa214dea46412aa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206524829925349507, guid: 40577b03be6a43c49aa214dea46412aa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7485480494193627392, guid: 40577b03be6a43c49aa214dea46412aa, type: 3}
       propertyPath: m_RootOrder
       value: 20

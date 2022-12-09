@@ -6,11 +6,20 @@ namespace Animations
     {
         [SerializeField] float fadeSpeed;
         
-        private bool playerTrigger, fadeIn = false;
+        private bool fadeIn = false;
+
+        void Update()
+        {
+            if (fadeIn)
+            {
+                Fade();
+            }
+        }
 
         private void Fade()
         {
-            Color objectColor = this.GetComponent<SpriteRenderer>().material.color;
+            Color objectColor = GetComponent<SpriteRenderer>().material.color;
+            Debug.Log(GetComponent<SpriteRenderer>().sprite);
             float fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
 
             objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Player;
 
 namespace Chests
 {
@@ -9,10 +10,12 @@ namespace Chests
         [SerializeField] GameObject objRemove3;
         [SerializeField] GameObject objRemove4;
 
+        private GameObject player;
         private ChestController chestCon;
 
         void Start()
         {
+            player = GameObject.FindWithTag("Player");
             chestCon = GetComponent<ChestController>();
         }
 
@@ -24,6 +27,8 @@ namespace Chests
                 Destroy(objRemove2);
                 Destroy(objRemove3);
                 Destroy(objRemove4);
+
+                player.GetComponent<PlayerController>().hasBlueRune = true;
             }
         }
     }

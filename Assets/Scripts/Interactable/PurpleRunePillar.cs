@@ -21,6 +21,7 @@ namespace Interactable
             if (activeTrigger && player.GetComponent<PlayerController>().hasPurpleRune && Input.GetKeyDown(KeyCode.E))
             {
                 isActive = true;
+                transform.Find("Glow").gameObject.GetComponent<SpriteRenderer>().enabled = true;
             }
         }
 

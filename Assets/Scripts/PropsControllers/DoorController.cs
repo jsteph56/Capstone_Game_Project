@@ -5,14 +5,21 @@ namespace PropsController
 {
     public class DoorController : MonoBehaviour
     {
-        [SerializeField] int sceneIndex;
+        [SerializeField] Transform exitPos;
+        
+        private GameObject player;
         private bool doorTrigger;
+
+        void Start()
+        {
+            player = GameObject.FindWithTag("Player");
+        }
 
         void Update()
         {
             if (doorTrigger && Input.GetKeyDown(KeyCode.E))
             {
-                SceneManager.LoadScene(sceneIndex);
+                player.transform.position = exitPos.position;
             }
         }
 

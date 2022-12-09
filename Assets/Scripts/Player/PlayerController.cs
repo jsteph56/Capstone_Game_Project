@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -6,6 +8,7 @@ namespace Player
     {
         [SerializeField] Rigidbody2D rb;
         [SerializeField] Animator animator;
+        [SerializeField] AudioSource audioSource;
         [SerializeField] float fadeSpeed;
 
         [SerializeField] Sprite stoneManSprite;
@@ -47,8 +50,16 @@ namespace Player
             if (!fadeOut) KeyInput();
             Fade();
             
-            if (state.running) animator.SetTrigger("Running");
-            else if (state.idle) animator.SetTrigger("Idle");
+            if (state.running) 
+            {
+                animator.SetTrigger("Running");
+                audioSource.mute = false;
+            }
+            else if (state.idle)
+            {
+                animator.SetTrigger("Idle");
+                audioSource.mute = true;
+            }
 
             if (Input.GetAxisRaw("Horizontal") == -1)
             {
@@ -57,6 +68,11 @@ namespace Player
             if (Input.GetAxisRaw("Horizontal") == 1)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
             }
         }
 
@@ -115,10 +131,16 @@ namespace Player
                     if (turnStone)
                     {
                         GetComponent<PlayerMovement>().enabled = false;
-                        Debug.Log("End Game");
+                        StartCoroutine(EndGame());
                     }
                 }
             }
+        }
+
+        IEnumerator EndGame()
+        {
+            SceneManager.LoadScene(2);
+            yield return null;
         }
 
         public void FadeOutObject()

@@ -1,11 +1,12 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Player;
 
 namespace PropsController
 {
     public class DoorController : MonoBehaviour
     {
         [SerializeField] Transform exitPos;
+        [SerializeField] Transform fadePosition;
         
         private GameObject player;
         private bool doorTrigger;
@@ -20,6 +21,7 @@ namespace PropsController
             if (doorTrigger && Input.GetKeyDown(KeyCode.E))
             {
                 player.transform.position = exitPos.position;
+                player.GetComponent<PlayerController>().fadePosition = fadePosition;
             }
         }
 

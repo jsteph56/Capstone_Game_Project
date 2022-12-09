@@ -1,25 +1,25 @@
 using UnityEngine;
-using Animations;
+using Player;
 
-namespace PropsControllers
+namespace Interactable
 {
-    public class PillarController : MonoBehaviour
-    {
-        private bool activeTrigger;
-        
+    public class BlueRunePillar : MonoBehaviour
+    {   
+        private GameObject player;
+        private bool activeTrigger = false;
+
+        public SpriteRenderer blueRune;
         public bool isActive;
 
         void Start()
         {
-            activeTrigger = false;
-            isActive = false;
+            player = GameObject.FindWithTag("Player");
         }
 
         void Update()
         {
-            if (activeTrigger && Input.GetKeyDown(KeyCode.E))
+            if (activeTrigger && player.GetComponent<PlayerController>().hasBlueRune && Input.GetKeyDown(KeyCode.E))
             {
-                this.GetComponent<SpriteColorAnimation>().enabled = true;
                 isActive = true;
             }
         }
@@ -29,11 +29,6 @@ namespace PropsControllers
             if (other.gameObject.tag == "Player")
             {
                 activeTrigger = true;
-
-                if (!isActive)
-                {
-                    this.GetComponentInChildren<MeshRenderer>().enabled = true;
-                }
             }
         }
 
@@ -42,7 +37,6 @@ namespace PropsControllers
             if (other.gameObject.tag == "Player")
             {
                 activeTrigger = false;
-                this.GetComponentInChildren<MeshRenderer>().enabled = false;
             }
         }
     }

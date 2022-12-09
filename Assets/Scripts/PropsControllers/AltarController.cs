@@ -1,7 +1,7 @@
 using UnityEngine;
 using Animations;
 
-namespace PropsController
+namespace PropsControllers
 {
     public class AltarController : MonoBehaviour
     {
@@ -19,8 +19,6 @@ namespace PropsController
             runes = GetComponent<PropsAltar>();
             p1 = pillar1.GetComponent<PillarController>();
             p2 = pillar2.GetComponent<PillarController>();
-
-            isActive = false;
         }
 
         void Update()

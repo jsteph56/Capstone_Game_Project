@@ -8,20 +8,23 @@ namespace Player
         [SerializeField] Animator animator;
         [SerializeField] float fadeSpeed;
 
+        [SerializeField] Sprite stoneManSprite;
+
         private bool fadeOut, fadeIn;
 
         public Transform fadePosition;
+        public bool turnStone = false;
+        public bool hasBlueRune, hasRedRune, hasPurpleRune, hasGreenRune = false;
 
         States state;
 
         struct States
         {
-            public bool idle, running, attacking;
+            public bool idle, running;
 
             public void SetIdle()
             {
                 running = false;
-                attacking = false;
 
                 idle = true;
             }
@@ -29,17 +32,8 @@ namespace Player
             public void SetRunning()
             {
                 idle = false;
-                attacking = false;
 
                 running = true;
-            }
-
-            public void SetAttacking()
-            {
-                idle = false;
-                running = false;
-
-                attacking = true;
             }
         }
 
@@ -92,6 +86,14 @@ namespace Player
                 if (objectColor.a <= 0)
                 {
                     transform.position = fadePosition.position;
+
+                    if (turnStone)
+                    {
+                        this.GetComponent<SpriteRenderer>().sprite = stoneManSprite;
+                        this.transform.localScale = new Vector3(1, 1, 1);
+                        animator.enabled = false;
+                    }
+
                     fadeOut = false;
                     FadeInObject();
                 }
@@ -109,6 +111,12 @@ namespace Player
                 {
                     GetComponent<PlayerMovement>().enabled = true;
                     fadeIn = false;
+
+                    if (turnStone)
+                    {
+                        GetComponent<PlayerMovement>().enabled = false;
+                        Debug.Log("End Game");
+                    }
                 }
             }
         }

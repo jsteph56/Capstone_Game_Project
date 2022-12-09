@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using PropsControllers;
 
@@ -6,10 +6,10 @@ using PropsControllers;
 namespace Animations
 {
 
-    public class PropsAltar : MonoBehaviour
+    public class PlayerPropsAltar : MonoBehaviour
     {
         [SerializeField] GameObject altar;
-        
+
         public List<SpriteRenderer> runes;
         public float lerpSpeed;
 
@@ -20,13 +20,12 @@ namespace Animations
         void Start()
         {
             targetColor = new Color(1, 1, 1, 0);
-            altarCon = altar.GetComponent<AltarController>();
+            runes = new List<SpriteRenderer>();
         }
 
         void Update()
         {
-            if (CheckActive()) targetColor = new Color(1, 1, 1, 1);
-            else targetColor = new Color(1, 1, 1, 0);
+            targetColor = new Color(1, 1, 1, 1);
 
             curColor = Color.Lerp(curColor, targetColor, lerpSpeed * Time.deltaTime);
 
@@ -34,11 +33,6 @@ namespace Animations
             {
                 r.color = curColor;
             }
-        }
-
-        private bool CheckActive()
-        {
-            return altarCon.isActive;
         }
     }
 }

@@ -71,7 +71,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: -0.12}
+  m_Offset: {x: 0.0052367896, y: -0.12}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -82,7 +82,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.2}
+  m_Size: {x: 0.28952643, y: 0.2}
   m_EdgeRadius: 0
 --- !u!212 &1228284751773316192
 SpriteRenderer:
@@ -184,3 +184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 927024604269236036}
   animator: {fileID: 8274461376536195327}
+  fadeSpeed: 0
+  stoneManSprite: {fileID: 21300000, guid: ec47f75fe8aff1644ac73998f4ad31b5, type: 3}
+  fadePosition: {fileID: 0}
+  turnStone: 0
+  hasBlueRune: 0
+  hasRedRune: 0
+  hasPurpleRune: 0
+  hasGreenRune: 0

@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PropsController
 {
     public class DoorController : MonoBehaviour
     {
+        [SerializeField] int sceneIndex;
         private bool doorTrigger;
 
         void Update()
         {
             if (doorTrigger && Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Move to new Scene");
+                SceneManager.LoadScene(sceneIndex);
             }
         }
 

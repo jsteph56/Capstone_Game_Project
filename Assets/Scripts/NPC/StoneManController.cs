@@ -1,5 +1,5 @@
 using UnityEngine;
-using PropsController;
+using PropsControllers;
 using Pathfinding;
 
 namespace NPC

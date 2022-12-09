@@ -9,6 +9,7 @@ TagManager:
   - Altar
   - Trigger
   - Bandit
+  - Rune Pillar
   layers:
   - Default
   - TransparentFX
